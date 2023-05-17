@@ -49,7 +49,7 @@ def recommend(movie):
 # movies_list=movies_list['title'].values
 
 #movies_dict=pickle.load(open('movie_dict.pkl','rb'))
-pickle_url = "https://Imran1z/movie_recommendation_system/main/movie_dict.pkl"
+pickle_url = "https://raw.githubusercontent.com/Imran1z/movie_recommendation_system/main/movie_dict.pkl"
 
 # Step 1: Download the pickle file
 try:
