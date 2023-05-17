@@ -46,23 +46,23 @@ def recommend(movie):
 # movies_list=pickle.load(open('movies.pkl','rb'))
 # movies_list=movies_list['title'].values
 
-# movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+movies_dict=pickle.load(open('movie_dict.pkl','rb'))
 #////////////////////////////////////////////////////////////////////////
 pickle_file_path = 'movie_dict.pkl'  # Update with the correct file path if necessary
 
-# Step 1: Check the file path
-if not os.path.exists(pickle_file_path):
-    raise FileNotFoundError(f"File '{pickle_file_path}' not found.")
-
-# Step 2: Verify file accessibility
-if not os.access(pickle_file_path, os.R_OK):
-    raise PermissionError(f"No read permissions for file '{pickle_file_path}'.")
-
-try:
-    with open(pickle_file_path, 'rb') as file:
-        movies_dict = pickle.load(file)
-except pickle.UnpicklingError as e:
-    raise ValueError(f"Error loading pickle file '{pickle_file_path}': {str(e)}")
+# # Step 1: Check the file path
+# if not os.path.exists(pickle_file_path):
+#     raise FileNotFoundError(f"File '{pickle_file_path}' not found.")
+#
+# # Step 2: Verify file accessibility
+# if not os.access(pickle_file_path, os.R_OK):
+#     raise PermissionError(f"No read permissions for file '{pickle_file_path}'.")
+#
+# try:
+#     with open(pickle_file_path, 'rb') as file:
+#         movies_dict = pickle.load(file)
+# except pickle.UnpicklingError as e:
+#     raise ValueError(f"Error loading pickle file '{pickle_file_path}': {str(e)}")
 
 
 #/////////////////////////////////////////
