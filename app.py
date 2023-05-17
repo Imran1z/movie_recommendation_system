@@ -48,25 +48,23 @@ def recommend(movie):
 # movies_list=pickle.load(open('movies.pkl','rb'))
 # movies_list=movies_list['title'].values
 
-movies_dict=pickle.load(open('movie_dict.pkl','rb'))
-# pickle_url = "https://raw.githubusercontent.com/Imran1z/movie_recommendation_system/main/movie_dict.pkl"
-#
-# # Step 1: Download the pickle file
-# try:
-#     with urllib.request.urlopen(pickle_url) as url:
-#         with open('movie_dict.pkl', 'wb') as file:
-#             file.write(url.read())
-# except Exception as e:
-#     raise ValueError(f"Error downloading pickle file from URL '{pickle_url}': {str(e)}")
-#
-# # Step 2: Load the pickle file
-# try:
-#     with open('movie_dict.pkl', 'rb') as file:
-#         movies_dict = pickle.load(file)
-# except pickle.UnpicklingError as e:
-#     raise ValueError(f"Error loading pickle file 'movie_dict.pkl': {str(e)}")
-#
-# # Continue with the rest of your code...
+# movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+# Get the absolute file path of the pickle file
+base_path = os.path.dirname(os.path.abspath(__file__))
+pickle_file_path = os.path.join(base_path, 'movie_dict.pkl')
+
+# Check if the pickle file exists
+if not os.path.exists(pickle_file_path):
+    raise FileNotFoundError(f"File '{pickle_file_path}' not found.")
+
+# Open the pickle file and load the data
+try:
+    with open(pickle_file_path, 'rb') as file:
+        movies_dict = pickle.load(file)
+except pickle.UnpicklingError as e:
+    raise ValueError(f"Error loading pickle file '{pickle_file_path}': {str(e)}")
+
+# Continue with the rest of your code...
 
 
 
