@@ -48,25 +48,25 @@ def recommend(movie):
 # movies_list=pickle.load(open('movies.pkl','rb'))
 # movies_list=movies_list['title'].values
 
-#movies_dict=pickle.load(open('movie_dict.pkl','rb'))
-pickle_url = "https://raw.githubusercontent.com/Imran1z/movie_recommendation_system/main/movie_dict.pkl"
-
-# Step 1: Download the pickle file
-try:
-    with urllib.request.urlopen(pickle_url) as url:
-        with open('movie_dict.pkl', 'wb') as file:
-            file.write(url.read())
-except Exception as e:
-    raise ValueError(f"Error downloading pickle file from URL '{pickle_url}': {str(e)}")
-
-# Step 2: Load the pickle file
-try:
-    with open('movie_dict.pkl', 'rb') as file:
-        movies_dict = pickle.load(file)
-except pickle.UnpicklingError as e:
-    raise ValueError(f"Error loading pickle file 'movie_dict.pkl': {str(e)}")
-
-# Continue with the rest of your code...
+movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+# pickle_url = "https://raw.githubusercontent.com/Imran1z/movie_recommendation_system/main/movie_dict.pkl"
+#
+# # Step 1: Download the pickle file
+# try:
+#     with urllib.request.urlopen(pickle_url) as url:
+#         with open('movie_dict.pkl', 'wb') as file:
+#             file.write(url.read())
+# except Exception as e:
+#     raise ValueError(f"Error downloading pickle file from URL '{pickle_url}': {str(e)}")
+#
+# # Step 2: Load the pickle file
+# try:
+#     with open('movie_dict.pkl', 'rb') as file:
+#         movies_dict = pickle.load(file)
+# except pickle.UnpicklingError as e:
+#     raise ValueError(f"Error loading pickle file 'movie_dict.pkl': {str(e)}")
+#
+# # Continue with the rest of your code...
 
 
 
@@ -101,18 +101,18 @@ if st.button('Recommend'):
    names, poster = recommend(movies_names)
    col1, col2, col3, col4, col5 = st.columns(5, gap="medium")
    with col1:
-       st.subheader(names[0])
+       st.text(names[0])
        st.image(poster[0])
    with col2:
-       st.subheader(names[1])
+       st.text(names[1])
        st.image(poster[1])
    with col3:
-       st.subheader(names[2])
+       st.text(names[2])
        st.image(poster[2])
    with col4:
-       st.subheader(names[3])
+       st.text(names[3])
        st.image(poster[3])
    with col5:
-       st.subheader(names[4])
+       st.text(names[4])
        st.image(poster[4])
 
