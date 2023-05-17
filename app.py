@@ -3,6 +3,8 @@ import json
 import streamlit as st
 import pickle
 import os
+import urllib.request
+
 import pandas as pd
 import requests
 
@@ -46,7 +48,28 @@ def recommend(movie):
 # movies_list=pickle.load(open('movies.pkl','rb'))
 # movies_list=movies_list['title'].values
 
-movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+#movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+pickle_url = "https://Imran1z/movie_recommendation_system/main/movie_dict.pkl"
+
+# Step 1: Download the pickle file
+try:
+    with urllib.request.urlopen(pickle_url) as url:
+        with open('movie_dict.pkl', 'wb') as file:
+            file.write(url.read())
+except Exception as e:
+    raise ValueError(f"Error downloading pickle file from URL '{pickle_url}': {str(e)}")
+
+# Step 2: Load the pickle file
+try:
+    with open('movie_dict.pkl', 'rb') as file:
+        movies_dict = pickle.load(file)
+except pickle.UnpicklingError as e:
+    raise ValueError(f"Error loading pickle file 'movie_dict.pkl': {str(e)}")
+
+# Continue with the rest of your code...
+
+
+
 #////////////////////////////////////////////////////////////////////////
 pickle_file_path = 'movie_dict.pkl'  # Update with the correct file path if necessary
 
